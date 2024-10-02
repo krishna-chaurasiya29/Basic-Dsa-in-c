@@ -1,0 +1,80 @@
+A Threaded Binary Tree is a type of binary tree where the null pointers i leaf nodes,
+which normally indicate the absence of child nodes, are replaced with pointers to the
+next in-order predecessor or successor node.
+This transformation allows for efficient in-order traversal of the tree without using additional
+memory for a stack or recursion.
+
+Two types of Threading are
+*SINGLE THREADED BINARY TREE
+-> Left-threaded:  Each null left  pointer is replaced by a pointer to its in-order predecessor.
+-> Right-threaded: Each null right pointer is replaced by a pointer to its in-order successor.
+
+DOUBLY THREADED(FULLY THREADED) BINARY TREE
+Both null left pointers are replaced with in-order predecessors, 
+and both null right pointers are replaced with in-order successors.
+
+In a normal binary tree, a null pointer would indicate the end of a subtree. In a threaded binary tree, 
+this pointer helps the in-order traversal by pointing to the next node directly.
+
+Advantages:
+No need for a stack or recursion for in-order traversal.
+It can be more memory efficient for traversal purposes.
+
+---------------------------------------------------------------------------------------------------------------------------
+Left Threading: Null Pointer are replaced with the in-order predecessor
+
+       10
+      /  \
+     5    15
+    / \     \
+   3   7     20
+In-Order: 3 → 5 → 7 → 10 → 15 → 20
+
+-> Node 3 has no left child, so its left pointer will point to null (since it has no in-order predecessor).
+-> Node 5 has a left child (3), so its left pointer remains the same.
+-> Node 7 has no left child, so its left pointer will point to its in-order predecessor 5.
+-> Node 10 has a left child (5), so its left pointer remains the same.
+-> Node 15 has no left child, so its left pointer will point to its in-order predecessor 10.
+-> Node 20 has no left child, so its left pointer will point to its in-order predecessor 15.
+
+-------------------------------------------------------------------------------------------------------------------------
+Doubly Threaded Binary Tree
+       10
+      /  \
+     5    15
+    / \     \
+   3   7     20
+
+Node 3:
+Left pointer: null (no predecessor), so remains null.
+Right pointer: Points to 5 (in-order successor).
+
+Node 5:
+Left pointer: Points to 3 (in-order predecessor).
+Right pointer: Points to 7 (in-order successor).
+
+Node 7:
+Left pointer: Points to 5 (in-order predecessor).
+Right pointer: Points to 10 (in-order successor).
+
+Node 10:
+Left pointer: Points to 7 (in-order predecessor).
+Right pointer: Points to 15 (in-order successor).
+
+Node 15:
+Left pointer: Points to 10 (in-order predecessor).
+Right pointer: Points to 20 (in-order successor).
+
+Node 20:
+Left pointer: Points to 15 (in-order predecessor).
+Right pointer: null (no successor), so remains null.
+
+Visualization of Doubly Threaded
+       10
+      /  \
+     5    15
+    / \     \
+   3   7     20
+    \  /    /
+    (5)(7)(10)(15)
+-------------------------------------------------------------------------------------------------------------------------

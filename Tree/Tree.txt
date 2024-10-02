@@ -1,0 +1,228 @@
+Types of Binary Tree Based on various Structure and Properties
+
+1. Full Binary Tree(Proper Binary Tree):
+- In a full binary tree, each node has either 0 or 2 children.
+
+2.Complete Binary Tree 
+- A Binary Tree where all levels are completely filled except possibly the last,
+  which is filled from left to right
+
+3.Perfect Binary Tree
+- A Binary Tree where all internal nodes have two children and all leaves have
+ the same depth or same levels
+
+4. Balanced Binary Tree:
+- A Binary Tree where the height difference between the left and right subtrees
+of any node is at most 1
+
+5. Skewed Binary Tree
+    Tree where each node as at most one child 
+    There are two types of Skewed Binary tree
+    Left Skewed Tree-> All nodes have only left children
+    Right Skewed Tree -> All nodes have only right children
+
+6. Degenerate (Pathological Tree):
+    Tree where each parent node has only one child , making it essential a linked list
+
+7. Binary Search Tree:
+    A binary tree where for each node, all valus in the left subtree are smaller,
+    and all values in the right subtree are greater than the node's value.
+
+8. AVL Tree:
+    A self-balancing binary search tree where the difference between the heights of
+    the left and right subtrees of any node cannot be more than one.
+
+9. Red Black Tree:
+    A Balanced Binary Search Tree with an additional Property where nodes are
+    coloured either red or Black to ensure the tree remains Balanced
+
+10. Heap (Binary Heap):
+A Binary Tree where the parent node is either greater than or equal to its
+children (Max Heap) or less than or equal to its children (Min Heap)
+
+
+
+
+Binary Tree and its types
+
+
+Terminology of Trees:
+Root: The topmost node in the tree.
+Node: An individual element of a tree containing data and references to child nodes.
+Parent: A node that has child nodes.
+Child: A node that descends from another node.
+Leaf: A node with no children.
+Subtree: A tree formed from a node and its descendants.
+Height: The length of the longest path from a node to a leaf.
+Depth: The length of the path from the root to the node.
+
+<-------------------Extra Knowledge:------------------>
+Types of Trees:
+
+Binary Tree:
+
+Each node has at most two children, referred to as the left child and the right child.
+Variants include Full Binary Tree, Complete Binary Tree, Perfect Binary Tree, etc.
+Binary Search Tree (BST):
+
+A binary tree with an ordering property: For each node, the left subtree contains values less than the node, and the right subtree contains values greater than the node.
+AVL Tree:
+
+A self-balancing binary search tree. For every node, the height of the left and right subtrees differs by at most 1.
+Red-Black Tree:
+
+A balanced binary search tree where nodes are colored either red or black. It ensures that no path from the root to a leaf is more than twice as long as any other.
+N-ary Tree:
+
+A tree where each node can have up to N children (not limited to 2). Common examples include:
+Ternary Tree: Each node has at most 3 children.
+Quad Tree: Each node has 4 children, often used in spatial indexing.
+Balanced Tree:
+
+A tree structure in which the height of two subtrees of any node differs by at most one to keep the depth minimal for fast operations.
+Heap (Binary Heap):
+
+A complete binary tree used for heap operations:
+Max-Heap: The value of the parent is greater than or equal to the values of its children.
+Min-Heap: The value of the parent is less than or equal to the values of its children.
+Trie (Prefix Tree):
+
+A special kind of N-ary tree used to store strings, where each node represents a single character, and paths represent prefixes of strings.
+B-Tree:
+
+A self-balancing search tree where nodes can have multiple children and are designed to keep data sorted and allow searches, insertions, deletions, and sequential access in logarithmic time. Commonly used in databases and file systems.
+Segment Tree:
+
+A binary tree used for storing intervals or segments. It allows querying the sum or minimum of a segment efficiently.
+Suffix Tree:
+
+A compressed trie of all the suffixes of a given string. It's used for pattern matching and text processing tasks.
+Spanning Tree (Graph-based):
+
+A tree that covers all vertices of a graph. There are no cycles, and the graph is connected.
+Decision Tree:
+
+A tree used in machine learning where internal nodes represent decisions based on feature values, and leaf nodes represent the output.
+Fenwick Tree (Binary Indexed Tree):
+
+A tree used to maintain the prefix sums of an array and allows querying and updating the array's sums in logarithmic time.
+
+
+***************  Traversal in Binary Tree **************
+Traversal in a binary tree involves visiting each node in a specific order. 
+There are three main types of
+1. Inorder Traversal Left->Root->Right
+2. Preorder Traversal Root->Left->Right
+3. Postorder Traversal Left->Right->Root
+4. LevelOrder Traversal Nodes are visited level by level Starting from root
+
+*******Application Of Binary Search Treee ***********
+
+A Binary Search Tree (BST) is a type of binary tree that stores elements (typically numbers or keys) in a way that allows 
+efficient search, insertion, and deletion operations. The key property of a BST is that for every node, the values of all 
+nodes in the left subtree are smaller, and the values of all nodes in the right subtree are larger. This property makes 
+BSTs highly useful for a wide range of applications.
+
+1. Searching and Indexing:
+
+Efficient Search: The BST allows for fast searching with an average time complexity of 𝑂(log𝑛)
+O(logn) when the tree is balanced. This makes it useful for applications that require frequent searches,
+such as:
+Databases: BSTs can be used to manage records by keys, such as in-memory databases where records need to be quickly retrieved.
+Symbol Tables: Used in compilers for managing variable names and their bindings
+
+2. Inserting and Deleting the data:
+Efficient Insertion/Deletion: Similar to searching, insertion and deletion operations are also 
+O(logn) on average, which makes BSTs suitable for:
+Dynamic Set of Data: Whenever you need to maintain a dynamic collection of data, such as in a contact list or address book, a BST allows efficient updating of records.
+
+
+3. Data Sorting(In-Order Traversal):
+BSTs can be used to sort data. Performing an in-order traversal of a BST results in the elements being visited in ascending order. This gives rise to its use in:
+Sorting Algorithms: A BST can be used as the basis for sorting algorithms, especially when combined with self-balancing mechanisms.
+Tree Sort: An efficient comparison-based sorting algorithm.
+
+
+4. Range Queries:
+
+BSTs can efficiently handle range queries. Given a range, the tree can be traversed to quickly find all elements within that range. This is useful in:
+Interval Searches: Finding keys or values within a certain range, such as in database query processing or file systems.
+Geospatial Data Management: BSTs are used to manage intervals and ranges in applications like geographic information systems (GIS).
+
+5.Prefix Matching:
+In text processing and autocomplete systems, BSTs can be used to store strings where searching for strings 
+with a common prefix can be performed efficiently.
+
+
+6. Priority Queues (When combined with AVL or Red-Black Trees):
+BSTs are sometimes used to implement priority queues, especially when using self-balancing variants 
+like AVL or Red-Black Trees. Elements can be inserted in any order, but retrieving the highest or 
+lowest priority element is efficient.
+
+and many more.............. take the help of chat gpt..
+
+Heaps: A binary tree used to implement priority queues
+Expression Trees: Used to represent arithmetic Expression
+Huffman coding trees : used in data compression algorithms.
+
+
+
+
+<--------------------Time complexebility and space complexibility--------------------->
+
+Time Complexibility depends upon the types of various operations on a binary treee 
+weather the tree is balanced or Unbalanced. 
+In balanced binary tree the height of the tree in minimum therfore performing the operation is faster
+if the tree is skewed( Unbalanced) the time complexibility degrades to the worst case.
+
+Let:
+n be the number of nodes in the tree.
+h be the height of the tree
+In balanced binary tree , h=log2(n)
+in the worst case (Unbalanced Tree) h=n-1(liked a link list)
+
+1. Searching (Search for node):
+Best case:-> O(1), if the node is at the root.
+Average case:->O(h), which is O(logn) for a balanced tree and O(n) for an unbalanced tree.
+Worst case:-> O(n), if the tree is completely skewed.
+
+2. Insertion 
+Best case:-> O(1), if Inserting at root.
+Average case:->O(h), which is O(logn) for a balanced tree and O(n) for an unbalanced tree.
+Worst case:-> O(n), if the tree is skewed(all nodes are present at one side).
+
+3. Deletion
+Best case:-> O(1), if deleting the root.
+Average case:->O(h), which is O(logn) for a balanced tree and O(n) for un balanced tree
+Worst case:-> O(n), if the tree is skewed(all nodes are present at one side)
+
+4. Traversal(In order, Pre order, Post Order):
+Time complexibility O(n) for all traversal, regardless of weather the tree is balanced or not,
+each node is visited exactly one.
+
+5. Height Calculation
+O(h)-> which traslated to O(n) in the worst case (Unbalanced tree)and O(log n) in the best case(balanced tree)
+
+
+
+
+****************************************************************************************************************************
+The Maximum no of nodes possible at any level i is:-> 2^i
+Max no of nodes at height n = 2^h+1 - 1
+Min no of nodes at height n = h+1
+
+If max nodes are given by that we can find the min height h = [log2 (n+1)-1]
+If min nodes are given by that we can find the max height h = n-1
+
+
+Threading In the Tree
+There are two types of threading single threaded and Doubly threaded
+
+Singly Threaded
+->Right Threaded
+->Left Threaded
+
+Doubly Threaded(which contains both right & left Threaded)
+
+=>In Left  Threding we have to link with inorder successor
+=>In Right Threding we have to link with inorder predecessor
