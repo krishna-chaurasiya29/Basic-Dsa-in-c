@@ -1,112 +1,135 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define SIZE 7
-#define EMPTY -1     // Indicator for empty slot
-#define DELETED -2   // Indicator for deleted slot
 
-int hashTable[SIZE];
+#define SIZE 10     // Define size of the hash table
+#define EMPTY -1    // Define constant for empty slot
+#define DELETED -2  // Define constant for deleted slot
 
-// Initialize hash table with EMPTY markers
-void init() {
-    for (int i = 0; i < SIZE; i++) {
-        hashTable[i] = EMPTY;
+int hashTable[SIZE];  // Array representing the hash table
+
+// Initialize the hash table with EMPTY value
+void init()
+{
+    for (int i = 0; i < SIZE; i++)
+    {
+        hashTable[i] = EMPTY;  // Set each slot in hash table to EMPTY
     }
 }
 
-// Linear probing insert
-void insert(int value) {
-    int key = value % SIZE;
+// Insert a value into the hash table using linear probing
+void insert(int value)
+{
+    int key = value % SIZE;  // Calculate hash key
     int index = key;
 
-    // Linear probing to find an empty slot
-    while (hashTable[index] != EMPTY && hashTable[index] != DELETED) {
-        index = (index + 1) % SIZE;
-        if (index == key) { // If we've looped back to the start
-            printf("Table is full, cannot insert %d\n", value);
+    // Probe for the next available slot
+    while (hashTable[index] != EMPTY && hashTable[index] != DELETED)
+    {
+        index = (index + 1) % SIZE;  // Move to the next slot
+        if (index == key)  // If we loop back to the starting slot
+        {
+            printf("The Value %d cannot be inserted,Hash table is full.\n",value);
             return;
         }
     }
-    hashTable[index] = value;
-    printf("Inserted %d at index %d\n", value, index);
+    hashTable[index] = value;  // Insert value into the available slot
 }
 
-// Linear probing delete
-void delete(int value) {
-    int key = value % SIZE;
+// Delete a value from the hash table
+void delete(int value)
+{
+    int key = value % SIZE;  // Calculate hash key
     int index = key;
 
-    // Linear probing to find the value
-    while (hashTable[index] != EMPTY) {
-        if (hashTable[index] == value) {
-            hashTable[index] = DELETED; // Mark as deleted
-            printf("Deleted %d from index %d\n", value, index);
+    // Probe to find the value
+    while (hashTable[index] != EMPTY)
+    {
+        if (hashTable[index] == value)  // If value found
+        {
+            hashTable[index] = DELETED;  // Mark it as DELETED
+            printf("Deleted the value %d from index %d.\n", value, index);
             return;
         }
-        index = (index + 1) % SIZE;
-        if (index == key) { // If we've looped back to the start
-            break;
+        else
+        {
+            index = (index + 1) % SIZE;  // Move to the next slot
+            if (index == key)  // If we loop back to the starting slot
+            {
+                break;
+            }
         }
     }
-    printf("Value %d not found in the table\n", value);
+    printf("Value %d not found in the table.\n", value);  // Value not found
 }
 
-// Linear probing search
-int search(int value) {
-    int key = value % SIZE;
+// Search for a value in the hash table
+void search(int value)
+{
+    int key = value % SIZE;  // Calculate hash key
     int index = key;
 
-    // Linear probing to find the value
-    while (hashTable[index] != EMPTY) {
-        if (hashTable[index] == value) {
-            printf("Found %d at index %d\n", value, index);
-            return index;
+    // Probe to find the value
+    while (hashTable[index] != EMPTY)
+    {
+        if (hashTable[index] == value)  // If value found
+        {
+            printf("Value %d found at index %d.\n", value, index);
+            return;
         }
-        index = (index + 1) % SIZE;
-        if (index == key) { // If we've looped back to the start
-            break;
+        else
+        {
+            index = (index + 1) % SIZE;  // Move to the next slot
+            if (index == key)  // If we loop back to the starting slot
+            {
+                break;
+            }
         }
     }
-    printf("Value %d not found in the table\n", value);
-    return -1;
+    printf("Value %d not found in the hash table.\n", value);  // Value not found
 }
 
-// Print the hash table
-void print() {
-    for (int i = 0; i < SIZE; i++) {
-        if (hashTable[i] == EMPTY) {
+// Print the contents of the hash table
+void print()
+{
+    for (int i = 0; i < SIZE; i++)
+    {
+        if (hashTable[i] == EMPTY)
+        {
             printf("hashTable[%d] --> EMPTY\n", i);
-        } else if (hashTable[i] == DELETED) {
+        }
+        else if (hashTable[i] == DELETED)
+        {
             printf("hashTable[%d] --> DELETED\n", i);
-        } else {
+        }
+        else
+        {
             printf("hashTable[%d] --> %d\n", i, hashTable[i]);
         }
     }
 }
 
-int main() {
-    init();
-    insert(7);
+int main()
+{
+    init();  // Initialize the hash table
     insert(0);
+    insert(1);
+    insert(2);
     insert(3);
-    insert(10);
+    insert(12);
     insert(4);
-    insert(5);
-
-    printf("\nHash table after insertions:\n");
-    print();
-
-    // Search for elements
-    search(10);
-    search(3);
-    search(100); // Should not be found
-
-    // Test delete operation
-    delete(10);
-    delete(3);
-    delete(100); // Attempt to delete non-existent element
-
-    printf("\nHash table after deletions:\n");
-    print();
+    insert(22);
+    insert(7);
+    insert(8);
+    insert(9);
+    insert(10);
+    
+    print();  // Print hash table after insertion
+    
+    search(4);  // Search for value 4
+    delete(4);  // Delete value 4
+    search(4);  // Search for value 4 after deletion
+    
+    print();  // Print hash table after deletion
 
     return 0;
 }
