@@ -43,11 +43,13 @@ Graph* graph = (Graph*) malloc(sizeof(Graph));
     return graph;
 }
 void addEdge(Graph *graph, int src, int dest) // Function to add an edge to
+//src=source,dest=destination
 {
     Node *newNode = createNode(dest);
     newNode->next = graph->adjLists[src];
     graph->adjLists[src] = newNode;
 }
+
 void printGraph(Graph *graph) // Function to print the graph
 {
     for (int i = 0; i < graph->Vertices; i++)
